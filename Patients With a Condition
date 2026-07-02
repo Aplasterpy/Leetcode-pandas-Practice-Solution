@@ -1,0 +1,9 @@
+# Write a solution to find the patient_id, patient_name, and conditions of the patients who have Type I Diabetes. Type I Diabetes always starts with DIAB1 prefix.
+
+import pandas as pd
+
+def find_patients(patients: pd.DataFrame) -> pd.DataFrame:
+    condition = (
+        patients['conditions'].str.contains(r'\DIAB1')
+    )
+    return patients[condition]

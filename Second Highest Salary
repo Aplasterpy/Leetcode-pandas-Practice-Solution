@@ -1,0 +1,14 @@
+# Write a solution to find the second highest distinct salary from the Employee table. If there is no second highest salary, return null (return None in Pandas).
+
+
+import pandas as pd
+
+def second_highest_salary(employee: pd.DataFrame) -> pd.DataFrame:
+    sorted_salaries = employee['salary'].drop_duplicates().sort_values(ascending=False)
+
+    if len(sorted_salaries) >= 2:
+        second_highest = sorted_salaries.nlargest(2).iloc[-1]
+    else:
+        second_highest = None
+    
+    return pd.DataFrame({'SecondHighestSalary': [second_highest]})
